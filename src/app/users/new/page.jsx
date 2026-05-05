@@ -8,18 +8,35 @@ import {
   Form,
   Input,
   Label,
-  TextArea,
+
   TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 
 const NewUserPage = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
 
+
     const formData = new FormData(e.target);
-    const userData = Object.fromEntries(formData.entries());
-    console.log("form",userData); 
-    
+    const newUsers = Object.fromEntries(formData.entries());
+    console.log("form",newUsers); 
+
+    const req = await fetch('http://localhost:5000/users',{
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+        },
+        body: JSON.stringify(newUsers)
+
+    });
+    const res = await req.json();
+   if(res.success){
+    alert("User added successfully!");
+    redirect('/users');
+   }else{
+    alert("Something went wrong!");
+   }   
 
   };
   return (
