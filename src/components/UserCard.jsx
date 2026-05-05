@@ -4,7 +4,7 @@ const UserCard = ({ user }) => {
   const { name, email, username, isActive } = user;
 
   return (
-    <div className="rounded-xl p-5 shadow-md border bg-gradient-to-br from-blue-50 to-indigo-100 hover:shadow-xl transition duration-300">
+    <div className="rounded-xl p-5 shadow-md border bg-linear-to-br from-blue-50 to-indigo-100 hover:shadow-xl transition duration-300">
       
       {/* Name */}
       <h2 className="text-xl font-bold text-gray-800">
