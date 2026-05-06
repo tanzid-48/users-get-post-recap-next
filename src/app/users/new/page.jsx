@@ -22,7 +22,7 @@ const NewUserPage = () => {
     const newUsers = Object.fromEntries(formData.entries());
     console.log("form",newUsers); 
 
-    const req = await fetch('http://localhost:5000/users',{
+    const req = await fetch('https://user-express-server-1.onrender.com/users',{
         method:'POST',
         headers:{
             'content-type':'application/json'

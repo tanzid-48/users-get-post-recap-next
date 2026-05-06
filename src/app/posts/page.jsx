@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const GetPostsData = async () => {
-  const res = await fetch("http://localhost:5000/posts");
+  const res = await fetch("https://user-express-server-1.onrender.com/posts");
   return res.json();
 };
 

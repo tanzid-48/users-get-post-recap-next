@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
 const NewPostsPage = () => {
@@ -12,7 +13,7 @@ const NewPostsPage = () => {
     const newPost = Object.fromEntries(formData.entries());
     //   console.log("post",newPost);
 
-    const req = await fetch("http://localhost:5000/posts", {
+    const req = await fetch("https://user-express-server-1.onrender.com/posts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -23,6 +24,7 @@ const NewPostsPage = () => {
     const res = await req.json();
     if (res.success) {
       alert("Post added successfully!");
+      redirect('/posts');
     } else {
       alert("Something went wrong!");
     }
