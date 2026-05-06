@@ -1,3 +1,4 @@
+import PostCard from "@/components/PostCard";
 import Link from "next/link";
 import React from "react";
 
@@ -15,6 +16,11 @@ const PostsPage = async () => {
         <Link className="btn bg-yellow-500 p-1 rounded-md" href={`/`}>Home</Link>
       <Link className="btn bg-purple-500 p-1 rounded-md" href={`/posts/new`}>Add New User</Link>
 
+      </div>
+      <div className="grid md:grid-cols-3 gap-4">
+        {
+        posts.map(post => <PostCard key={post.id} post = {post}></PostCard>)
+      }
       </div>
 
     </div>
