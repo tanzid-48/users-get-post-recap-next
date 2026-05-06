@@ -1,10 +1,66 @@
-import React from 'react';
+"use client";
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 const NewPostsPage = () => {
+
+ const [loading, setLoading] = useState(false);
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+         setLoading(true);
+    }
+         
+
     return (
-        <div>
-           <h2>Add To New Post</h2> 
-        </div>
+          <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md space-y-4"
+      >
+    
+        <h2 className="text-2xl font-bold text-center text-gray-800">
+          Add New Post
+        </h2>
+
+        {/* Title */}
+        <input
+          type="text"
+          name="title"
+          placeholder="Post Title"
+          required
+          className="w-full p-2 border rounded-md"
+        />
+
+        {/* Body */}
+        <textarea
+          name="body"
+          placeholder="Post Content"
+          required
+          rows="4"
+          className="w-full p-2 border rounded-md"
+        />
+
+        {/* User ID */}
+        <input
+          type="number"
+          name="userId"
+          placeholder="User ID"
+          required
+          className="w-full p-2 border rounded-md"
+        />
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition"
+        >
+          {loading ? "Adding..." : "Add Post"}
+        </button>
+         <Link className='mb-4 bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400 transition ' href={'/'}>Home</Link>
+      </form>
+    </div>
     );
 };
 
